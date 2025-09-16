@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MONKE DEATH</title>
+<style>
+  body, html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Courier New', monospace;
+    background-color: #ff6200;
+    overflow: hidden;
+  }
+
+  .page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #0ff;
+    text-align: center;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+  }
+
+  .neon-button {
+    padding: 20px 60px;
+    color: #0ff;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid #0ff;
+    background: transparent;
+    cursor: pointer;
+    text-align: center;
+    margin: 10px 0;
+    transition: all 0.2s;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+  }
+
+  .neon-button:hover {
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff, 0 0 80px #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
+  }
+
+  h1 {
+    color: #0ff;
+    font-size: 32px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+  }
+
+  #welcomeScreen {
+    background-color: #ff6200;
+    display: flex;
+    opacity: 1;
+  }
+
+  #gamePage, #aboutPage, #settingsPage, #leaderboardPage, #creditsPage, #loginPage, #signupPage {
+    background-color: #1a1a1a;
+  }
+
+  ol { text-align: left; }
+  p { max-width: 600px; line-height: 1.5; margin: 10px; }
+
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #111;
+    border-bottom: 2px solid #0ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    z-index: 10;
+  }
+
+  .top-right { display: flex; align-items: center; gap: 10px; padding-right: 20px; }
+  .neon-button.small-btn { padding: 8px 20px; font-size: 16px; }
+
+  #gamePage .menu-buttons { margin-top: 100px; display: flex; flex-direction: column; align-items: center; }
+
+  .test-text { position: absolute; top: 110px; left: 15px; color: #0ff; font-size: 30px;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff; }
+
+  .login-form input, .signup-form input {
+    padding: 10px; font-size: 18px; border: 2px solid #0ff; background: transparent;
+    color: #0ff; outline: none; width: 250px; text-align: center; margin-bottom: 10px;
+    text-shadow: 0 0 5px #0ff;
+  }
+  .login-form input::placeholder, .signup-form input::placeholder { color: #0ff; opacity: 0.7; }
+  .login-form button, .signup-form button { margin-top: 10px; }
+
+  .error-box { display: none; color: #ff0000; background: #330000; padding: 10px; margin-bottom: 10px; border: 2px solid #ff0000; border-radius: 5px; text-align:center; }
+  .success-box { display: none; color: #00ff00; background: #003300; padding: 10px; margin-bottom: 10px; border: 2px solid #00ff00; border-radius: 5px; text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- Welcome Screen -->
+<div id="welcomeScreen" class="page">
+  <h1>Welcome to the OFFICIAL MONKE DEATH website</h1>
+  <button class="neon-button" id="enterBtn">ENTER</button>
+</div>
+
+<!-- Main Menu -->
+<div id="gamePage" class="page">
+  <div class="top-bar">
+    <span class="top-left">MONKE DEATH - MAIN MENU</span>
+    <span class="top-right">
+      <button class="neon-button small-btn" id="loginBtn">Log In</button>
+      <button class="neon-button small-btn" id="signupBtn">Sign Up</button>
+    </span>
+  </div>
+  <div class="test-text">TEST</div>
+  <div class="menu-buttons">
+    <button class="neon-button" id="aboutBtn">About</button>
+    <button class="neon-button" id="settingsBtn">Settings</button>
+    <button class="neon-button" id="leaderboardBtn">Staff</button>
+    <button class="neon-button" id="creditsBtn">Credits</button>
+  </div>
+</div>
+
+<!-- About Page -->
+<div id="aboutPage" class="page">
+  <h1>About MONKE DEATH</h1>
+  <p>MONKE DEATH IS STILL UNDER CONSTRUCTION</p>
+  <button class="neon-button backBtn">Back</button>
+  <div class="test-text">TEST</div>
+</div>
+
+<!-- Settings Page -->
+<div id="settingsPage" class="page">
+  <h1>Settings</h1>
+  <p>Adjust your game preferences here.</p>
+  <button class="neon-button backBtn">Back</button>
+  <div class="test-text">TEST</div>
+</div>
+
+<!-- Leaderboard Page -->
+<div id="leaderboardPage" class="page">
+  <h1>Leaderboard</h1>
+  <p>STAFF OF GAME:</p>
+  <ol>
+    <li>JimmyGorila - OWNER</li>
+    <li>44What - STAFF MANAGER</li>
+    <li>Grinchy - MODERATOR</li>
+  </ol>
+  <button class="neon-button backBtn">Back</button>
+  <div class="test-text">TEST</div>
+</div>
+
+<!-- Credits Page -->
+<div id="creditsPage" class="page">
+  <h1>Credits</h1>
+  <p>Game Developer: Jimmy</p>
+  <p>Music: [Your Music Credit]</p>
+  <p>Graphics: [Your Graphics Credit]</p>
+  <button class="neon-button backBtn">Back</button>
+  <div class="test-text">TEST</div>
+</div>
+
+<!-- Login Page -->
+<div id="loginPage" class="page">
+  <h1>Login</h1>
+  <div id="loginError" class="error-box">The details you have put is wrong. Please try again later.</div>
+  <form id="loginForm" class="login-form">
+    <input type="text" id="loginUsername" placeholder="Username" required><br><br>
+    <input type="password" id="loginPassword" placeholder="Password" required><br><br>
+    <button type="submit" class="neon-button">Log In</button>
+  </form>
+  <button class="neon-button backBtn">Back</button>
+</div>
+
+<!-- Signup Page -->
+<div id="signupPage" class="page">
+  <h1>Sign Up</h1>
+  <div id="signupError" class="error-box">Username or password cannot be empty!</div>
+  <div id="signupSuccess" class="success-box">Sign up successful! You can now log in.</div>
+  <form id="signupForm" class="signup-form">
+    <input type="text" id="signupUsername" placeholder="Choose Username" required><br><br>
+    <input type="password" id="signupPassword" placeholder="Choose Password" required><br><br>
+    <button type="submit" class="neon-button">Sign Up</button>
+  </form>
+  <button class="neon-button backBtn">Back</button>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" src="your-music-file.mp3" loop></audio>
+
+<script>
+// Pages
+const pages = {
+  welcome: document.getElementById('welcomeScreen'),
+  game: document.getElementById('gamePage'),
+  about: document.getElementById('aboutPage'),
+  settings: document.getElementById('settingsPage'),
+  leaderboard: document.getElementById('leaderboardPage'),
+  credits: document.getElementById('creditsPage'),
+  login: document.getElementById('loginPage'),
+  signup: document.getElementById('signupPage')
+};
+
+// Show page
+function showPage(pageToShow){
+  for(const key in pages){
+    const page = pages[key];
+    if(page===pageToShow){
+      page.style.display='flex';
+      setTimeout(()=>page.style.opacity=1,50);
+    } else{
+      page.style.opacity=0;
+      setTimeout(()=>page.style.display='none',500);
+    }
+  }
+}
+
+// ENTER button
+document.getElementById('enterBtn').addEventListener('click',()=>{
+  const music = document.getElementById('bgMusic');
+  music.volume=0.3;
+  music.play();
+  showPage(pages.game);
+});
+
+// Menu buttons
+document.getElementById('aboutBtn').addEventListener('click',()=>showPage(pages.about));
+document.getElementById('settingsBtn').addEventListener('click',()=>showPage(pages.settings));
+document.getElementById('leaderboardBtn').addEventListener('click',()=>showPage(pages.leaderboard));
+document.getElementById('creditsBtn').addEventListener('click',()=>showPage(pages.credits));
+
+// Back buttons
+document.querySelectorAll('.backBtn').forEach(btn=>{
+  btn.addEventListener('click',()=>showPage(pages.game));
+});
+
+// --- LOGIN / SIGNUP SYSTEM WITH SIGNOUT ---
+let currentUser = localStorage.getItem('currentUser') || null;
+const topRight = document.querySelector('.top-right');
+
+function updateTopBar() {
+  topRight.innerHTML = '';
+
+  if(currentUser){
+    const usernameDisplay = document.createElement('span');
+    usernameDisplay.textContent = currentUser;
+    usernameDisplay.style.fontWeight = 'bold';
+    usernameDisplay.style.fontSize = '16px';
+    usernameDisplay.style.color = '#0ff';
+    usernameDisplay.style.textShadow = '0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff';
+
+    const signOutBtn = document.createElement('button');
+    signOutBtn.className = 'neon-button small-btn';
+    signOutBtn.textContent = 'Sign Out';
+    signOutBtn.addEventListener('click', ()=>{
+      currentUser = null;
+      localStorage.removeItem('currentUser');
+      updateTopBar();
+      showPage(pages.game);
+    });
+
+    topRight.appendChild(usernameDisplay);
+    topRight.appendChild(signOutBtn);
+
+  } else {
+    const loginButton = document.createElement('button');
+    loginButton.className = 'neon-button small-btn';
+    loginButton.textContent = 'Log In';
+    loginButton.addEventListener('click', ()=>showPage(pages.login));
+
+    const signupButton = document.createElement('button');
+    signupButton.className = 'neon-button small-btn';
+    signupButton.textContent = 'Sign Up';
+    signupButton.addEventListener('click', ()=>showPage(pages.signup));
+
+    topRight.appendChild(loginButton);
+    topRight.appendChild(signupButton);
+  }
+}
+
+updateTopBar();
+
+// LOGIN
+document.getElementById('loginForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const username=document.getElementById('loginUsername').value.trim();
+  const password=document.getElementById('loginPassword').value.trim();
+  const errorBox=document.getElementById('loginError');
+
+  const accounts = JSON.parse(localStorage.getItem('accounts') || '{}');
+
+  if(accounts[username] && accounts[username]===password){
+    errorBox.style.display='none';
+    currentUser = username;
+    localStorage.setItem('currentUser', currentUser);
+    updateTopBar();
+    alert(`Logged in as: ${username}`);
+    showPage(pages.game);
+  } else{
+    errorBox.style.display='block';
+  }
+});
+
+// SIGNUP
+document.getElementById('signupForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const username=document.getElementById('signupUsername').value.trim();
+  const password=document.getElementById('signupPassword').value.trim();
+  const errorBox=document.getElementById('signupError');
+  const successBox=document.getElementById('signupSuccess');
+
+  if(!username || !password){
+    errorBox.textContent = "Username or password cannot be empty!";
+    errorBox.style.display='block';
+    successBox.style.display='none';
+    return;
+  }
+
+  let accounts = JSON.parse(localStorage.getItem('accounts') || '{}');
+
+  if(accounts[username]){
+    errorBox.textContent = "Username already exists!";
+    errorBox.style.display='block';
+    successBox.style.display='none';
+    return;
+  }
+
+  accounts[username] = password;
+  localStorage.setItem('accounts', JSON.stringify(accounts));
+
+  errorBox.style.display='none';
+  successBox.style.display='block';
+
+  setTimeout(()=>{
+    successBox.style.display='none';
+    showPage(pages.login);
+  },1500);
+});
+</script>
+
+</body>
+</html>
